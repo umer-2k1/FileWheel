@@ -5,51 +5,56 @@
 
 **Last updated:** 2026-10-28
 **Current version target:** v1 ("Lean core")
-**Current milestone:** M0 — Foundation
+**Current milestone:** M1 — The wheel UI
 **Repo:** https://github.com/umer-2k1/FileWheel (public, single `main` branch)
 
 ---
 
 ## TL;DR — where we are
 
-The project has just been initialized. All planning and context docs are written. The
-GitHub repo is live and MIT-licensed. The Tauri app scaffold is the next thing to build.
-No application code exists yet.
+Foundation (M0) is done: the repo, all context docs, and a Tauri v2 app that builds on
+both halves — the web frontend and the Rust core — are in place and verified on macOS.
+Work has moved to M1: building the Harbor-blue radial wheel UI.
 
 ## What's done ✅
 
-- Repo initialized, public, MIT license, `.gitignore`.
-- README (repo front door).
-- Full `context/` docs: VISION, ROADMAP (v1/v2/v3 + approved conversion matrix),
-  DECISIONS (D-001..D-012), ARCHITECTURE, and specs (wheel, OCR, converters).
-- THIRD-PARTY-NOTICES scaffold.
+- **M0 — Foundation**
+  - Repo initialized, public, MIT license, `.gitignore`.
+  - README + full `context/` docs (VISION, ROADMAP, DECISIONS, ARCHITECTURE, specs).
+  - THIRD-PARTY-NOTICES scaffold.
+  - Tauri v2 app scaffolded and renamed to FileWheel (crate `filewheel`, 520×660 window).
+  - Frontend builds (`pnpm build`) with Vite 5; Rust core compiles (`cargo check`, exit 0).
+  - Harbor-blue theme tokens (light + dark) and an app shell wired to a `ping` health
+    check that confirms the frontend ↔ core bridge works.
 
 ## What's next ▶ (in order)
 
-1. **M0 (finish):** Scaffold the Tauri app so it launches to an empty shell
-   (`src/` frontend + `src-tauri/` Rust core, `pnpm tauri dev` works on macOS).
-2. **M1:** Build the Harbor-blue radial wheel (light/dark), three modes, drop zone.
-3. **M2:** First conversion end-to-end — image PNG → JPG, saved next to the original.
-4. **M3:** OCR via macOS Vision (then Windows/Linux paths).
-5. **M4:** The rest of the v1 converters, tools, and actions + FFmpeg sourcing.
-6. **M5:** Polish, packaging, ship v1.
+1. **M1 (in progress):** Harbor-blue radial wheel (light/dark), three modes
+   (Convert/Tools/Actions) with Shift/Ctrl/Alt switching, drop zone, relevant-slice logic.
+2. **M2:** First conversion end-to-end — image PNG → JPG, saved next to the original.
+3. **M3:** OCR via macOS Vision (then Windows/Linux paths).
+4. **M4:** The rest of the v1 converters, tools, and actions + FFmpeg sourcing.
+5. **M5:** Polish, packaging, ship v1.
 
 See [`ROADMAP.md`](ROADMAP.md) for the full milestone detail.
 
 ## Known issues / risks / to-fix
 
+- **Vite pinned to 5.x:** Vite 8 (rolldown) was missing its native binary on this
+  toolchain; pinned to the stable Vite 5 line. Revisit when the toolchain stabilizes.
 - **OCR native bindings** (macOS Vision, Windows OCR) are the hardest part — build and
-  verify the macOS path first behind the `Ocr` trait (see `specs/ocr.md`).
+  verify the macOS path first behind the `Ocr` trait (see `specs/ocr.md`). Not started.
 - **Windows/Linux can't be built/tested on the dev machine** (it's a Mac). Their code is
   written to spec but must be verified on real machines or CI before being trusted.
 - **Code signing / notarization** not set up — unsigned builds will warn on macOS/Windows.
-  Deferred to v3 (D-012 / ROADMAP), acceptable for development.
+  Deferred to v3 (acceptable for development).
 
-## How to run (once scaffold lands)
+## How to run
 
 ```bash
 pnpm install
-pnpm tauri dev
+pnpm tauri dev      # run the desktop app (first run compiles the Rust core — slow)
+pnpm build          # build the frontend only
 ```
 
 ## Conventions
