@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+
+# Tauri / Rust
+src-tauri/target/
+target/
+**/*.rs.bk
+*.pdb
+
+# Bundled external tools (downloaded or fetched at build time; never committed)
+src-tauri/binaries/
+tools/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.log
+Thumbs.db
+
+# Test / coverage
+coverage/
+*.lcov
