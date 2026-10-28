@@ -5,16 +5,18 @@
 
 **Last updated:** 2026-10-28
 **Current version target:** v1 ("Lean core")
-**Current milestone:** M1 — The wheel UI
+**Current milestone:** M2 — First conversion end-to-end
 **Repo:** https://github.com/umer-2k1/FileWheel (public, single `main` branch)
 
 ---
 
 ## TL;DR — where we are
 
-Foundation (M0) is done: the repo, all context docs, and a Tauri v2 app that builds on
-both halves — the web frontend and the Rust core — are in place and verified on macOS.
-Work has moved to M1: building the Harbor-blue radial wheel UI.
+Foundation (M0) and the wheel UI (M1) are done. The app launches to the Harbor-blue
+radial wheel; dropping a file shows the slices relevant to its type; the three modes
+(Convert/Tools/Actions) switch by tab and by Shift/Ctrl/Alt. Verified visually in both the
+Tauri shell and browser preview. Work has moved to M2: making the first conversion
+(image PNG → JPG) actually run in the Rust core.
 
 ## What's done ✅
 
@@ -26,15 +28,21 @@ Work has moved to M1: building the Harbor-blue radial wheel UI.
   - Frontend builds (`pnpm build`) with Vite 5; Rust core compiles (`cargo check`, exit 0).
   - Harbor-blue theme tokens (light + dark) and an app shell wired to a `ping` health
     check that confirms the frontend ↔ core bridge works.
+- **M1 — The wheel UI**
+  - SVG radial wheel with ghost-slice affordance and a drop hub.
+  - Per-file-type slice logic (image/pdf/audio/video) via a placeholder frontend catalog.
+  - Convert/Tools/Actions tabs + Shift/Ctrl/Alt mode switching.
+  - Tauri drag-drop (real paths) with a DOM fallback for browser preview; inline toast.
+  - Verified in the browser pane: wheel renders, drop populates relevant slices, modes switch.
 
 ## What's next ▶ (in order)
 
-1. **M1 (in progress):** Harbor-blue radial wheel (light/dark), three modes
-   (Convert/Tools/Actions) with Shift/Ctrl/Alt switching, drop zone, relevant-slice logic.
-2. **M2:** First conversion end-to-end — image PNG → JPG, saved next to the original.
-3. **M3:** OCR via macOS Vision (then Windows/Linux paths).
-4. **M4:** The rest of the v1 converters, tools, and actions + FFmpeg sourcing.
-5. **M5:** Polish, packaging, ship v1.
+1. **M2 (next):** First conversion end-to-end — image PNG → JPG. Move the operation catalog
+   into the Rust core (`operations_for`), add an image backend, a `run_operation` command,
+   a native file picker (dialog plugin), save next to the original, show the real result.
+2. **M3:** OCR via macOS Vision (then Windows/Linux paths).
+3. **M4:** The rest of the v1 converters, tools, and actions + FFmpeg sourcing.
+4. **M5:** Polish, packaging, ship v1.
 
 See [`ROADMAP.md`](ROADMAP.md) for the full milestone detail.
 
