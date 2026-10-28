@@ -9,14 +9,27 @@
   </head>
   <body>
     <div id="app">
-      <div class="brand">
-        <span class="mark" aria-hidden="true"></span>
-        <h1>FileWheel</h1>
+      <header class="topbar">
+        <div class="brand">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="name">FileWheel</span>
+        </div>
+      </header>
+
+      <nav class="modes" id="modes" aria-label="Wheel mode">
+        <button data-mode="convert" aria-selected="true">Convert</button>
+        <button data-mode="tools" aria-selected="false">Tools</button>
+        <button data-mode="actions" aria-selected="false">Actions</button>
+      </nav>
+
+      <div class="filebar hidden" id="filebar">
+        <span class="file-chip" id="file-chip"></span>
+        <span class="hint">Shift convert · Ctrl tools · Alt actions</span>
       </div>
-      <p class="tagline">Drop a file on the wheel. Get it converted.</p>
-      <p class="shell-note">
-        Core: <span id="core-status">connecting…</span>
-      </p>
+
+      <div class="wheel-wrap" id="wheel"></div>
+
+      <div class="toast hidden" id="toast"></div>
     </div>
   </body>
 </html>

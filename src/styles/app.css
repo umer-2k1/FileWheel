@@ -26,46 +26,163 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 24px;
-  text-align: center;
+  gap: 16px;
+  padding: 20px 20px 28px;
   user-select: none;
 }
 
-/* Wordmark: a Harbor-blue mark + the name */
+/* ---- top bar ---- */
+.topbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
-
 .brand .mark {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
   background: var(--accent);
 }
-
-.brand h1 {
-  margin: 0;
-  font-size: 22px;
+.brand .name {
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: -0.01em;
 }
 
-.tagline {
-  margin: 0;
+/* ---- mode tabs ---- */
+.modes {
+  display: flex;
+  gap: 6px;
+}
+.modes button {
+  appearance: none;
+  border: 0.5px solid var(--border);
+  background: var(--surface);
   color: var(--text-2);
-  font-size: 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.modes button:hover {
+  border-color: var(--border-strong);
+}
+.modes button[aria-selected="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
 }
 
-.shell-note {
-  margin-top: 6px;
+/* ---- file bar ---- */
+.filebar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  color: var(--text);
+  font-size: 12.5px;
+  padding: 6px 11px;
+  border-radius: var(--radius);
+}
+.filebar .hint {
   color: var(--text-3);
-  font-size: 12px;
+  font-size: 11.5px;
 }
 
-#core-status {
-  color: var(--accent);
+/* ---- wheel ---- */
+.wheel-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin-top: 4px;
+  border-radius: 50%;
+  transition: box-shadow var(--dur) var(--ease);
+}
+.wheel-wrap.drag-over {
+  box-shadow: var(--ring);
+}
+.wheel-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slice {
+  fill: var(--surface);
+  stroke: var(--border);
+  stroke-width: 0.5;
+  cursor: pointer;
+  transition: fill var(--dur) var(--ease);
+}
+.slice:hover,
+.slice:focus-visible {
+  fill: var(--accent-soft);
+  outline: none;
+}
+.slice.ghost {
+  cursor: default;
+  opacity: 0.55;
+}
+.slice-label {
+  fill: var(--text-2);
+  font-size: 12.5px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.hub {
+  fill: var(--hub);
+}
+.hub-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.hub-glyph {
+  stroke: #fff;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hub-text {
+  fill: rgba(255, 255, 255, 0.85);
+  font-size: 11px;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* ---- toast ---- */
+.toast {
+  margin-top: auto;
+  width: 100%;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  color: var(--text);
+  font-size: 13px;
+  padding: 11px 14px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
 }
