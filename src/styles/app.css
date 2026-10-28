@@ -1,0 +1,71 @@
+@import "./theme.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Wordmark: a Harbor-blue mark + the name */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand .mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--accent);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.shell-note {
+  margin-top: 6px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+#core-status {
+  color: var(--accent);
+}

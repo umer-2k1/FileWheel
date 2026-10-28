@@ -1,0 +1,93 @@
+/* FileWheel theme tokens — Harbor blue on a neutral canvas.
+   Light is the default; dark is applied via prefers-color-scheme and via an
+   explicit [data-theme] on :root (so we can add a manual toggle later).
+   See context/DECISIONS.md (D-004). */
+
+:root {
+  /* Surfaces */
+  --bg: #f5f7fa;          /* page canvas */
+  --surface: #ffffff;     /* cards, slices */
+  --surface-2: #eef1f5;   /* subtle raised */
+
+  /* Text */
+  --text: #1b2230;
+  --text-2: #5b6472;
+  --text-3: #9aa3b2;
+
+  /* Lines */
+  --border: #e7eaef;
+  --border-strong: #d6dbe3;
+
+  /* Accent — Harbor blue */
+  --accent: #2f6fed;
+  --accent-hover: #255fd6;
+  --accent-soft: #eaf1fe;
+  --on-accent: #ffffff;
+
+  /* The wheel hub */
+  --hub: #0c2540;
+
+  /* Shape + motion */
+  --radius: 10px;
+  --radius-lg: 14px;
+  --ring: 0 0 0 3px rgba(47, 111, 237, 0.28);
+  --dur: 160ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"],
+:root:not([data-theme="light"]) {
+  /* no-op guard; real dark values live in the blocks below */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141b26;
+    --surface: #1b2330;
+    --surface-2: #222c3c;
+
+    --text: #eef2f8;
+    --text-2: #9aa6b8;
+    --text-3: #67728a;
+
+    --border: #2a3446;
+    --border-strong: #33415a;
+
+    --accent: #4f8bff;
+    --accent-hover: #6ba0ff;
+    --accent-soft: #1a2b47;
+    --on-accent: #ffffff;
+
+    --hub: #0a1830;
+
+    --ring: 0 0 0 3px rgba(79, 139, 255, 0.32);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #141b26;
+  --surface: #1b2330;
+  --surface-2: #222c3c;
+
+  --text: #eef2f8;
+  --text-2: #9aa6b8;
+  --text-3: #67728a;
+
+  --border: #2a3446;
+  --border-strong: #33415a;
+
+  --accent: #4f8bff;
+  --accent-hover: #6ba0ff;
+  --accent-soft: #1a2b47;
+  --on-accent: #ffffff;
+
+  --hub: #0a1830;
+
+  --ring: 0 0 0 3px rgba(79, 139, 255, 0.32);
+
+  color-scheme: dark;
+}
